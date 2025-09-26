@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>☀️😊 Guia Anti-Ansiedade - Seu Companheiro Diário</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Guia simples para combater ansiedade: rastreie humor, exercícios de respiração, alimentos e diário.">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">☀️😊 Guia Anti-Ansiedade</h1>
+            <p class="subtitle">Seu espaço acolhedor para cuidar da mente e do corpo</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Seção Principal: Rastreamento de Humor -->
+        <section class="mood-section card">
+            <h2>Como você se sente hoje? 🌈</h2>
+            <div class="mood-slider-container">
+                <div class="mood-labels">
+                    <span>😢 Baixo</span>
+                    <span id="moodValue">5</span>
+                    <span>😊 Alto</span>
+                </div>
+                <input type="range" id="moodSlider" class="mood-slider" min="1" max="10" value="5">
+                <button id="saveMoodBtn" class="btn btn-primary">Salvar Meu Humor</button>
+                <div id="moodMessage" class="message hidden"></div>
+            </div>
+        </section>
+
+        <!-- Navegação Principal: Cards de Acesso Rápido -->
+        <nav class="main-nav">
+            <h2>Escolha uma ferramenta para começar 💫</h2>
+            <div class="nav-grid">
+                <div class="nav-card" id="foodGuideBtn">
+                    <span class="nav-icon">🥗</span>
+                    <h3>Guia de Alimentos</h3>
+                    <p>Descubra o que comer para acalmar a mente</p>
+                </div>
+                <div class="nav-card" id="breathingBtn">
+                    <span class="nav-icon">⏳</span>
+                    <h3>Exercícios de Respiração</h3>
+                    <p>Respire fundo e relaxe em minutos</p>
+                </div>
+                <div class="nav-card" id="diaryBtn">
+                    <span class="nav-icon">📝</span>
+                    <h3>Meu Diário</h3>
+                    <p>Registre pensamentos e evolua</p>
+                </div>
+                <div class="nav-card" id="notificationBtn">
+                    <span class="nav-icon">🔔</span>
+                    <h3>Lembretes Diários</h3>
+                    <p>Receba dicas motivacionais</p>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Seção de Estatísticas -->
+        <section class="stats-section card">
+            <h2>Suas Estatísticas de Bem-Estar 📊</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span id="totalEntries" class="stat-number">0</span>
+                    <span class="stat-label">Registros Totais</span>
+                </div>
+                <div class="stat-item">
+                    <span id="avgMood" class="stat-number">0</span>
+                    <span class="stat-label">Humor Médio</span>
+                </div>
+                <div class="stat-item">
+                    <span id="streak" class="stat-number">0</span>
+                    <span class="stat-label">Streak (Dias)</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal para Guia de Alimentos (Tabs Separadas - Saudáveis e Não Saudáveis Nunca Juntos) -->
+    <div id="foodModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>🥗 Guia de Alimentos Anti-Ansiedade</h2>
+            <p>Alimentos que ajudam a reduzir o estresse e equilibrar o humor. Baseado em nutrição para saúde mental.</p>
+            
+            <div class="food-tabs">
+                <button class="tab-btn active" data-tab="helps">🍏 Alimentos que Ajudam</button>
+                <button class="tab-btn" data-tab="avoid">⚠️ Evite Estes</button>
+            </div>
+            
+            <div id="helps" class="tab-content active">
+                <div class="food-list">
+                    <div class="food-item">
+                        <span class="food-icon">🍌</span>
+                        <div>
+                            <h4>Banana</h4>
+                            <p>Rica em potássio e vitamina B6, ajuda a regular o humor e reduzir ansiedade.</p>
+                        </div>
+                    </div>
+                    <div class="food-item">
+                        <span class="food-icon">🥑</span>
+                        <div>
+                            <h4>Abacate</h4>
+                            <p>Ômega-3 e gorduras boas para o cérebro, promovendo calma e foco.</p>
+                        </div>
+                    </div>
+                    <div class="food-item">
+                        <span class="food-icon">🥛</span>
+                        <div>
+                            <h4>Iogurte Natural</h4>
+                            <p>Probióticos que melhoram o intestino e reduzem sintomas de estresse.</p>
+                        </div>
+                    </div>
+                    <div class="food-item">
+                        <span class="food-icon">🌰</span>
+                        <div>
+                            <h4>Nozes e Amêndoas</h4>
+                            <p>Magnésio para relaxar músculos e mente, combatendo tensão.</p>
+                        </div>
+                    </div>
+                    <div class="food-item">
+                        <span class="food-icon">🍫</span>
+                        <div>
+                            <h4>Chocolate Amargo (70%+)</h4>
+                            <p>Flavonoides que liberam endorfinas, melhorando o humor naturalmente.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="avoid" class="tab-content">
+                <div class="food-list">
+                    <div class="food-item">
+                        <span class="food-icon">☕</span>
+                        <div>
+                            <h4>Café e Refrigerantes</h4>
+                            <p>Cafeína em excesso aumenta o cortisol, piorando a ansiedade.</p>
+                        </div>
+                    </div>
+                    <div class="food-item">
+                        <span class="food-icon">🍟</span>
+                        <div>
+                            <h4>Fast Food e Frituras</h4>
+                            <p>Gorduras trans inflamam o corpo e desequilibram hormônios do estresse.</p>
+                        </div>
+                    </div>
+                    <div class="food-item">
+                        <span class="food-icon">🍬</span>
+                        <div>
+                            <h4>Açúcares Refinados</h4>
+                            <p>Causam picos de energia seguidos de quedas, aumentando irritabilidade.</p>
+                        </div>
+                    </div>
+                    <div class="food-item">
+                        <span class="food-icon">🍺</span>
+                        <div>
+                            <h4>Álcool</h4>
+                            <p>Desidrata e interfere no sono, agravando sintomas de ansiedade.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <!-- Modal para Exercícios de Respiração (3 Tabs - Substitua Aqui) -->
+<div id="breathingModal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>⏳ Exercícios de Respiração</h2>
+        <p>Escolha o tipo certo para o momento!</p>
+        
+        <div class="breathing-tabs">
+            <button class="tab-btn" data-tab="coherent">1️⃣ Crises de Ansiedade</button>
+            <button class="tab-btn" data-tab="diaphragmatic">2️⃣ Dia a Dia</button>
+            <button class="tab-btn active" data-tab="478">3️⃣ Relaxar/Dormir</button>
+        </div>
+        
+        <!-- Tab 1: Coerente (Crises - Azul, 5s/5s) -->
+        <div id="coherent" class="tab-content">
+            <h3>Respiração Coerente </h3>
+            <p><strong>Por quê:</strong> Rápida para acalmar crises, reduz batimento cardíaco e sensação de falta de ar.</p>
+            <p><strong>Efeito:</strong> Estabiliza o corpo, dá sensação de controle e reduz sintomas físicos da ansiedade.</p>
+            <div class="breathing-container">
+                <div class="breathing-circle coherent" id="breathingCircleCoherent">
+                    <div class="lung-icon">⏳</div>
+                    
+                </div>
+                <div class="breathing-controls">
+                    
+                    <button id="stopCoherent" class="btn btn-secondary hidden">Parar</button>
+                </div>
+                <div class="breathing-instructions">
+                    <p><strong>Como fazer:</strong></p>
+                    <ol>
+                        <li>Inspire pelo nariz contando 5 segundos (veja a ampulheta encher!)</li>
+                        <li>Expire pelo nariz (ou boca) contando 5 segundos (veja esvaziar!)</li>
+                        <li>Repita por 3 a 5 minutos (30 ciclos)</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tab 2: Diafragmática (Dia a Dia - Verde, 4s/4s) -->
+        <div id="diaphragmatic" class="tab-content">
+            <h3>Respiração Diafragmática</h3>
+            <p><strong>Por quê:</strong> Simples para o dia a dia, treina o corpo para respirar de forma calma e eficiente em qualquer lugar.</p>
+            <p><strong>Efeito:</strong> Diminui tensão muscular, regula oxigenação e mantém o sistema nervoso equilibrado.</p>
+            <div class="breathing-container">
+                <div class="breathing-circle diaphragmatic" id="breathingCircleDiaphragmatic">
+                    <div class="lung-icon">⏳</div>
+                    <div class="breathing-text" id="breathingTextDiaphragmatic">Clique para começar</div>
+                </div>
+                <div class="breathing-controls">
+                    
+                    <button id="stopDiaphragmatic" class="btn btn-secondary hidden">Parar</button>
+                </div>
+                <div class="breathing-instructions">
+                    <p><strong>Como fazer:</strong></p>
+                    <ol>
+                        <li>Coloque a mão na barriga.</li>
+                        <li>Inspire profundamente pelo nariz por 4 segundos (barriga sobe, ampulheta enche!)</li>
+                        <li>Expire devagar pela boca por 4 segundos (barriga esvazia, ampulheta esvazia!)</li>
+                        <li>Faça 5 a 10 minutos (75 ciclos), 1–2 vezes ao dia.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tab 3: 4-7-8 (Relaxar - Roxo, Seu Original Atualizado) -->
+        <div id="478" class="tab-content active">
+            <h3>Respiração 4-7-8 </h3>
+            <p><strong>Por quê:</strong> Comprovada para relaxamento profundo, ótima antes de dormir ou em insônia.</p>
+            <p><strong>Efeito:</strong> Ativa o nervo vago, relaxa o corpo, diminui ansiedade e facilita o sono.</p>
+            <div class="breathing-container">
+                <div class="breathing-circle 478" id="breathingCircle478">
+                    <div class="lung-icon">⏳</div>
+                    <div class="breathing-text" id="breathingText478">Clique para começar</div>
+                </div>
+                <div class="breathing-controls">
+                    
+                    <button id="stop478" class="btn btn-secondary hidden">Parar</button>
+                </div>
+                <div class="breathing-instructions">
+                    <p><strong>Como fazer:</strong></p>
+                    <ol>
+                        <li>Inspire pelo nariz por 4 segundos (veja a ampulheta encher!)</li>
+                        <li>Segure a respiração por 7 segundos</li>
+                        <li>Expire pela boca por 8 segundos (veja a ampulheta esvaziar!)</li>
+                        <li>Repita 4 a 8 ciclos (leva uns 3–5 minutos)</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Modal para Diário -->
+    <div id="diaryModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>📝 Meu Diário de Humor</h2>
+            <p>Registre e reflita sobre seu dia. Seus dados ficam salvos no navegador!</p>
+            <div class="new-entry">
+                <textarea id="newDiaryEntry" placeholder="Descreva como foi seu dia, seu humor e o que ajudou ou prejudicou sua ansiedade hoje..." rows="4"></textarea>
+                <button id="saveDiaryBtn" class="btn btn-primary">Salvar Entrada</button>
+                <div id="diaryMessage" class="message hidden"></div>
+            </div>
+            <div id="diaryEntries" class="diary-list">
+                <!-- Entradas serão carregadas pelo JS -->
+            </div>
+            <button id="closeDiary" class="btn btn-secondary" style="margin-top: 1rem;">Fechar Diário</button>
+        </div>
+    </div>
+
+    <!-- Modal para Lembretes -->
+    <div id="notificationModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>🔔 Lembretes Diários</h2>
+            <p>Em breve: Configure lembretes para respiração e dicas diárias! Por enquanto, volte amanhã para uma mensagem motivacional. 😊</p>
+            <button class="btn btn-primary" onclick="closeModal('notificationModal');">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer card" style="text-align: center; margin-top: 4rem; padding: 2rem; background: rgba(255, 255, 255, 0.8);">
+        <p>&copy; 2024 Guia Anti-Ansiedade. Desenvolvido com ❤️ para promover bem-estar. Projeto UNINTER.</p>
+        <p>Consulte um profissional de saúde para orientação personalizada. 🌟</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
