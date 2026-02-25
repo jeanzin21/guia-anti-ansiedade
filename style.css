@@ -497,7 +497,7 @@ h2 {
 /* Cores Específicas por Tipo */
 .breathing-circle.coherent { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
 .breathing-circle.diaphragmatic { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
-.breathing-circle.\34 78 { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
+.breathing-circle.type-478 { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
 
 /* Ampulheta CSS Animada */
 .hourglass-icon {
