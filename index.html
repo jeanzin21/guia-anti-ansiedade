@@ -51,11 +51,6 @@
                     <h3>Meu Diário</h3>
                     <p>Registre pensamentos e evolua</p>
                 </div>
-                <div class="nav-card" id="notificationBtn">
-                    <span class="nav-icon">🔔</span>
-                    <h3>Lembretes Diários</h3>
-                    <p>Receba dicas motivacionais</p>
-                </div>
             </div>
         </nav>
 
@@ -185,13 +180,14 @@
             <p><strong>Por quê:</strong> Rápida para acalmar crises, reduz batimento cardíaco e sensação de falta de ar.</p>
             <p><strong>Efeito:</strong> Estabiliza o corpo, dá sensação de controle e reduz sintomas físicos da ansiedade.</p>
             <div class="breathing-container">
-                <div class="breathing-circle coherent" id="breathingCircleCoherent">
-                    <div class="lung-icon">⏳</div>
-                    
-                </div>
                 <div class="breathing-controls">
-                    
                     <button id="stopCoherent" class="btn btn-secondary hidden">Parar</button>
+                </div>
+                <div class="breathing-circle coherent" id="breathingCircleCoherent">
+                    <div class="hourglass-icon">
+                        <div class="hourglass-sand"></div>
+                    </div>
+                    <div class="breathing-text" id="breathingTextCoherent">Clique para começar</div>
                 </div>
                 <div class="breathing-instructions">
                     <p><strong>Como fazer:</strong></p>
@@ -210,13 +206,14 @@
             <p><strong>Por quê:</strong> Simples para o dia a dia, treina o corpo para respirar de forma calma e eficiente em qualquer lugar.</p>
             <p><strong>Efeito:</strong> Diminui tensão muscular, regula oxigenação e mantém o sistema nervoso equilibrado.</p>
             <div class="breathing-container">
-                <div class="breathing-circle diaphragmatic" id="breathingCircleDiaphragmatic">
-                    <div class="lung-icon">⏳</div>
-                    <div class="breathing-text" id="breathingTextDiaphragmatic">Clique para começar</div>
-                </div>
                 <div class="breathing-controls">
-                    
                     <button id="stopDiaphragmatic" class="btn btn-secondary hidden">Parar</button>
+                </div>
+                <div class="breathing-circle diaphragmatic" id="breathingCircleDiaphragmatic">
+                    <div class="hourglass-icon">
+                        <div class="hourglass-sand"></div>
+                    </div>
+                    <div class="breathing-text" id="breathingTextDiaphragmatic">Clique para começar</div>
                 </div>
                 <div class="breathing-instructions">
                     <p><strong>Como fazer:</strong></p>
@@ -236,13 +233,14 @@
             <p><strong>Por quê:</strong> Comprovada para relaxamento profundo, ótima antes de dormir ou em insônia.</p>
             <p><strong>Efeito:</strong> Ativa o nervo vago, relaxa o corpo, diminui ansiedade e facilita o sono.</p>
             <div class="breathing-container">
-                <div class="breathing-circle 478" id="breathingCircle478">
-                    <div class="lung-icon">⏳</div>
-                    <div class="breathing-text" id="breathingText478">Clique para começar</div>
-                </div>
                 <div class="breathing-controls">
-                    
                     <button id="stop478" class="btn btn-secondary hidden">Parar</button>
+                </div>
+                <div class="breathing-circle 478" id="breathingCircle478">
+                    <div class="hourglass-icon">
+                        <div class="hourglass-sand"></div>
+                    </div>
+                    <div class="breathing-text" id="breathingText478">Clique para começar</div>
                 </div>
                 <div class="breathing-instructions">
                     <p><strong>Como fazer:</strong></p>
@@ -273,16 +271,6 @@
                 <!-- Entradas serão carregadas pelo JS -->
             </div>
             <button id="closeDiary" class="btn btn-secondary" style="margin-top: 1rem;">Fechar Diário</button>
-        </div>
-    </div>
-
-    <!-- Modal para Lembretes -->
-    <div id="notificationModal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>🔔 Lembretes Diários</h2>
-            <p>Em breve: Configure lembretes para respiração e dicas diárias! Por enquanto, volte amanhã para uma mensagem motivacional. 😊</p>
-            <button class="btn btn-primary" onclick="closeModal('notificationModal');">Fechar</button>
         </div>
     </div>
 
