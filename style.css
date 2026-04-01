@@ -128,75 +128,6 @@ h2 {
     font-weight: 600;
 }
 
-/* Seção de Humor */
-.mood-section {
-    text-align: center;
-}
-
-.mood-slider-container {
-    margin: 2.5rem 0;
-}
-
-.mood-slider {
-    width: 100%;
-    height: 10px;
-    border-radius: 10px;
-    background: linear-gradient(to right, #ff9ff3, #ffd93d, #a8e6cf);
-    outline: none;
-    -webkit-appearance: none;
-    margin-bottom: 1.5rem;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.mood-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #ff9a56, #ffd93d);
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(255, 154, 86, 0.3);
-    transition: transform 0.2s ease;
-}
-
-.mood-slider::-webkit-slider-thumb:hover {
-    transform: scale(1.1);
-}
-
-.mood-slider::-moz-range-thumb {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #ff9a56, #ffd93d);
-    cursor: pointer;
-    border: none;
-    box-shadow: 0 4px 12px rgba(255, 154, 86, 0.3);
-}
-
-.mood-labels {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    font-weight: 500;
-    font-size: 1.1rem;
-}
-
-#moodValue {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #ff9a56;
-    min-width: 40px;
-    text-align: center;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
-
 /* Botões */
 .btn {
     padding: 15px 30px;
@@ -257,6 +188,16 @@ h2 {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* Caixa de informações estática (não oculta pelo JS) */
+.info-box {
+    margin-top: 1.5rem;
+    padding: 15px;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: 600;
+    animation: fadeIn 0.5s ease;
 }
 
 /* Navegação Principal */
@@ -440,6 +381,10 @@ h2 {
     flex: 1;
 }
 
+.food-tabs .tab-btn:first-child {
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+}
+
 .tab-btn:not(.active) {
     background: rgba(168, 230, 207, 0.5);
     color: #7a9a8a;
@@ -456,6 +401,22 @@ h2 {
 
 .tab-content.active {
     display: block;
+}
+
+/* Estilos específicos para tornar as abas de respiração mais acolhedoras */
+.breathing-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 2.5rem;
+    justify-content: center;
+}
+
+.breathing-tabs .tab-btn {
+    border-radius: 50px; /* Formato arredondado/acolhedor */
+    flex: 1;
+    box-shadow: 0 4px 10px rgba(168, 230, 207, 0.2);
+    padding: 12px 20px;
+    font-size: 1rem;
 }
 
 .food-list {
@@ -524,4 +485,33 @@ h2 {
     margin-bottom: 3rem;
     z-index: 10;
     position: relative;
+}
+
+/* Estilos para a área de digitação do Diário */
+.new-entry {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+#newDiaryEntry {
+    width: 100%;
+    padding: 1.2rem; /* Afasta o texto das bordas */
+    border-radius: 15px;
+    border: 2px solid rgba(168, 230, 207, 0.5);
+    background: #fff;
+    font-family: inherit;
+    font-size: 1.1rem;
+    color: #5a5a5a;
+    outline: none; /* Remove o contorno padrão do navegador */
+    transition: all 0.3s ease;
+    resize: vertical; /* Permite redimensionar apenas na vertical */
+    min-height: 120px;
+}
+
+#newDiaryEntry:focus {
+    border-color: #ff9a56; /* Destaque na cor do tema ao clicar */
+    box-shadow: 0 0 0 4px rgba(255, 154, 86, 0.15); /* Efeito suave de brilho */
+    caret-color: #ff9a56; /* Cor da barra piscante (cursor) */
 }

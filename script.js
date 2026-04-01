@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden'; // Impede scroll no fundo
     }
+    window.openModal = openModal;
 
     function closeModal(modalId) {
         const modal = document.getElementById(modalId);
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const messages = modal.querySelectorAll('.message');
         messages.forEach(msg => msg.classList.add('hidden'));
     }
+    window.closeModal = closeModal;
 
     // Fechar Modais ao Clicar no X ou Fora
     document.querySelectorAll('.close').forEach(closeBtn => {
@@ -37,6 +39,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Abrir Modais via Cards
     document.getElementById('foodGuideBtn').addEventListener('click', () => openModal('foodModal'));
     document.getElementById('breathingBtn').addEventListener('click', () => openModal('breathingModal'));
+    document.getElementById('sunExposureBtn').addEventListener('click', () => openModal('sunModal'));
+    document.getElementById('exerciseBtn').addEventListener('click', () => openModal('exerciseModal'));
     document.getElementById('diaryBtn').addEventListener('click', () => {
         openModal('diaryModal');
         loadDiaryEntries(); // Carrega entradas ao abrir
@@ -57,27 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.add('active');
             document.getElementById(tabName).classList.add('active');
         });
-    });
-
-    // Rastreamento de Humor
-    const moodSlider = document.getElementById('moodSlider');
-    const moodValue = document.getElementById('moodValue');
-    const saveMoodBtn = document.getElementById('saveMoodBtn');
-    const moodMessage = document.getElementById('moodMessage');
-
-    moodSlider.addEventListener('input', function() {
-        moodValue.textContent = this.value;
-    });
-
-    saveMoodBtn.addEventListener('click', function() {
-        const mood = parseInt(moodSlider.value);
-        const moods = JSON.parse(localStorage.getItem('moods') || '[]');
-        moods.push({ date: new Date().toISOString().split('T')[0], value: mood });
-        localStorage.setItem('moods', JSON.stringify(moods));
-        moodMessage.textContent = `Humor salvo: ${mood}/10 😊`;
-        moodMessage.classList.remove('hidden');
-        updateStats();
-        setTimeout(() => moodMessage.classList.add('hidden'), 3000);
     });
 
     // Diário de Humor (FUNCIONAL: Salvar, Listar, Excluir, Fechar)
@@ -300,22 +283,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Estatísticas (Atualiza Total, Humor Médio, Streak)
+    // Estatísticas (Atualiza Total e Streak)
     function updateStats() {
-        const moods = JSON.parse(localStorage.getItem('moods') || '[]');
         const entries = JSON.parse(localStorage.getItem('diaryEntries') || '[]');
-        const totalEntries = moods.length + entries.length;
+        const totalEntries = entries.length;
 
         // Total Registros
         document.getElementById('totalEntries').textContent = totalEntries;
-
-        // Humor Médio (só de moods)
-        if (moods.length > 0) {
-            const avgMood = (moods.reduce((sum, m) => sum + m.value, 0) / moods.length).toFixed(1);
-            document.getElementById('avgMood').textContent = avgMood;
-        } else {
-            document.getElementById('avgMood').textContent = '0';
-        }
 
         // Streak Básico (dias consecutivos com entradas)
         if (entries.length > 0) {
